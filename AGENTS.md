@@ -6,6 +6,25 @@ Basic Memory is a local-first knowledge management system built on the Model Con
 bidirectional communication between LLMs (like Claude) and markdown files, creating a personal knowledge graph that can
 be traversed using links between documents.
 
+## Agent OS Project Context
+
+This repository is a software development project maintained under Ben's Agent OS. Global Agent OS startup is handled
+by harness-level or system-level instructions; agents unfamiliar with Agent OS should read
+[`prompts/README.md`](prompts/README.md) before continuing.
+
+- Read [`prompts/architecture.md`](prompts/architecture.md) before changing architecture, interfaces, file formats,
+  defaults, or major behavior.
+- Read [`prompts/plans.md`](prompts/plans.md) before continuing implementation, validation, or maintenance work.
+- Treat `prompts/*_deep_records_*.md` as archival. Do not read deep records during routine development unless Ben
+  explicitly requests historical context or an active context file points to one for a current question.
+- When adding, renaming, or deleting a prompt file, update both this index and `prompts/README.md`.
+
+### Prompt Index
+
+- `prompts/README.md` — prompt-directory conventions and routing.
+- `prompts/architecture.md` — current architecture and repository organization.
+- `prompts/plans.md` — current implementation state, validation, and safe-resume context.
+
 ## CODEBASE DEVELOPMENT
 
 ### Project information
