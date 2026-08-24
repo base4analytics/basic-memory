@@ -127,6 +127,22 @@ indexing for the owning note:
 
 Users can set `embed` directly in YAML frontmatter or pass it as custom metadata through note-writing interfaces.
 
+## Filename and Permalink Normalization
+
+`Entity.safe_title` and `Entity.permalink` are related but distinct provider projections. With the default
+`kebab_filenames=false`, a generated Markdown filename may preserve an underscore in its sanitized title, while
+`generate_permalink()` always converts spaces and underscores to hyphens across every path segment. Consumers that
+precompute deterministic paths should therefore make both directories and generated storage titles permalink-safe
+rather than assuming filename text and permalink text are interchangeable.
+
+The sibling GBrain Phase 5 implementation applies this to the Basic Memory provider schema for application type
+`system_schema`: its schema entity and protected application note type remain `system_schema`, but its deterministic
+provider-schema storage title is `gbrain-v0-system-schema-provider-schema`. It also hyphenates deterministic protected
+record directories such as `canonical/access-policy/` and `system/gbrain-basic-memory-schema-v0/`. This avoids a
+possible divergence between generated file paths and provider permalinks. This is source-level behavior from the fork;
+the deployed Cloud response still remains the final contract evidence when that separately approved artifact is first
+written.
+
 ## Authoritative Detail
 
 This file is a top-level map, not a replacement for detailed design documentation. Use `docs/ARCHITECTURE.md` for layer
